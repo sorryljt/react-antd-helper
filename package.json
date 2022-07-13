@@ -4,6 +4,7 @@
 	"description": "一款快速生成react+antd各种场景的模板插件",
 	"version": "0.0.1",
 	"repository": "https://github.com/sorryljt/react-antd-helper",
+	"publisher": "sorryljt",
 	"engines": {
 		"vscode": "^1.69.0"
 	},
