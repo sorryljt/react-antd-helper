@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as fs from 'fs';
+import * as nodepath from 'path';
 import simplePageTemplate from './template/simplePage';
 import searchFormAndTable from './template/searchFormAndTable';
 import ModalPage from './template/modal';
@@ -15,17 +16,18 @@ import ModalPage from './template/modal';
  */
 
 const writeFile = (path: string, content: string, fileName?: string | undefined, fileNameExtra?: string | undefined) => {
-	let newfileName = fileName || '/index.tsx';
+	let newfileName = fileName || 'index.tsx';
 	const opt = {
 		flag: 'wx' // 但是如果文件路径存在，则文件写入失败。 覆盖写入： 'w'
 	};
-	const exists = fs.existsSync(path + newfileName);
+	const exists: boolean = fs.existsSync(`${path}${nodepath.sep}${newfileName}`);
 	if (exists) {
-		newfileName = fileNameExtra || '/index_副本.tsx';
+		newfileName = fileNameExtra || 'index_副本.tsx';
 	}
-	fs.writeFile(path + newfileName, content, opt, (err) => {
+	console.log(`写入路径:${path}${nodepath.sep}${newfileName}`);
+	fs.writeFile(`${path}${nodepath.sep}${newfileName}`, content, opt, (err) => {
 		if (err) {
-				vscode.window.showErrorMessage(`写入${newfileName}失败`);
+				vscode.window.showErrorMessage(`写入${newfileName}失败,可能原因是，改文件夹下已存在${newfileName}`);
 				return;
 		}
 		vscode.window.showInformationMessage(`已生成一个示例页面${newfileName}`);
@@ -50,15 +52,15 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	let generateSimplePage = vscode.commands.registerCommand('react-antd-helper.generateSimplePage', (e) => {
-		writeFile(e.path, simplePageTemplate);
+		writeFile(e.fsPath, simplePageTemplate);
 	});
 	
 	let generateSearchFormAndTable = vscode.commands.registerCommand('react-antd-helper.generateSearchFormAndTable', (e) => {
-		writeFile(e.path, searchFormAndTable);
+		writeFile(e.fsPath, searchFormAndTable);
 	});
 
 	let generateModal = vscode.commands.registerCommand('react-antd-helper.generateModal', (e) => {
-		writeFile(e.path, ModalPage, '/modalPage.tsx', '/modelPage_副本.tsx');
+		writeFile(e.fsPath, ModalPage, 'modalPage.tsx', 'modelPage_副本.tsx');
 	});
 
 	context.subscriptions.push(disposable);
