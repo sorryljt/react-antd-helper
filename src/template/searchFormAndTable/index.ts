@@ -29,7 +29,7 @@ const App: React.FC<AppProps> = (props) => {
 
   // 这里是页面状态
   const [ loading, setLoading ] = useState<boolean>(false); // 表格loading状态
-  const [ data, setData ] = useState<any[]>([]); // 表格数据
+  const [ tableData, setTableData ] = useState<any[]>([]); // 表格数据
   const [ total, setTotal ] = useState<number>(0); // 数据总数
   const [ searchData, setSearchData ] = useState<any>({
     pageNum: 1,
@@ -39,37 +39,37 @@ const App: React.FC<AppProps> = (props) => {
 
   const columns: any = [
     {
-      title: '订单号',
+      title: '列名1',
       dataIndex: 'id',
       align: 'center',
       width: '150',
     },
     {
-      title: '提现金额(元)',
+      title: '列名2',
       dataIndex: 'amount',
       align: 'center',
       width: '150',
     },
     {
-      title: '银行账户开户行',
+      title: '列名3',
       dataIndex: 'bankCardName',
       align: 'center',
       width: '150',
     },
     {
-      title: '银行账户号',
+      title: '列名4',
       dataIndex: 'bankCardNo',
       align: 'center',
       width: '150',
     },
     {
-      title: '订单创建时间',
+      title: '列名5',
       dataIndex: 'createTime',
       align: 'center',
       width: '150',
     },
     {
-      title: '订单状态',
+      title: '列名6',
       dataIndex: 'stateDesc',
       align: 'center',
       width: '150',
@@ -81,7 +81,7 @@ const App: React.FC<AppProps> = (props) => {
     const values = await form.validateFields();
     setSearchData({
       ...values,
-      currentPage: 1,
+      pageNum: 1,
       pageSize: 10,
     });
   }
@@ -114,14 +114,14 @@ const App: React.FC<AppProps> = (props) => {
     // useEffect在组件初始化或searchData更新时执行
     const params = {
       ...searchData,
-      currentPage: searchData.pageNum || 1,
+      pageNum: searchData.pageNum || 1,
       pageSize: searchData.pageSize || 10,
     };
     setLoading(true)
     getData(params).then((res: any) => { // getData为请求表格接口,可根据实际开发场景对此做改动
       setLoading(false)
       if (res.code === 0) {
-        setData(res.data)
+        setTableData(res.data)
         setTotal(res.total)
         // TODO ...剩余逻辑
         return
@@ -138,19 +138,19 @@ const App: React.FC<AppProps> = (props) => {
         <Row>
           <Col span={7}>
             <FormItem
-              label="收款码"
+              label="表单项1"
               name="id"
             >
               <Input placeholder="请输入" allowClear />
             </FormItem>
           </Col>
           <Col span={7}>
-            <FormItem label="提现金额" name="receiptAlias">
+            <FormItem label="表单项2" name="receiptAlias">
               <Input placeholder="请输入" allowClear />
             </FormItem>
           </Col>
           <Col span={7}>
-            <FormItem label="所属业务线" name="channelId">
+            <FormItem label="表单项3" name="channelId">
               <Input placeholder="请输入" allowClear />
             </FormItem>
           </Col>
@@ -166,11 +166,11 @@ const App: React.FC<AppProps> = (props) => {
       </Form>
       </div>
       <Table
-        dataSource={data}
+        dataSource={tableData}
         columns={columns}
         loading={loading}
         size="small"
-        rowKey="id" // 特殊注意，一定要取数据每一项中的主键
+        rowKey="id" // 特殊注意，一定要取数据每一项中的唯一值，默认为"key"
         scroll={{ x: '100%' }}
         bordered
         pagination={paginationProps}

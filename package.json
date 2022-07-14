@@ -2,19 +2,21 @@
   "name": "react-antd-helper",
 	"displayName": "react-antd-helper",
 	"description": "一款快速生成react+antd各种场景的模板插件",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"repository": "https://github.com/sorryljt/react-antd-helper",
 	"publisher": "sorryljt",
+	"license": "MIT",
 	"engines": {
-		"vscode": "^1.69.0"
+		"vscode": "^1.65.x"
 	},
 	"categories": [
 		"Other"
 	],
 	"activationEvents": [
+				"onCommand:react-antd-helper.helloWorld",
         "onCommand:react-antd-helper.generateSimplePage",
         "onCommand:react-antd-helper.generateSearchFormAndTable",
-        "onCommand:react-antd-helper.helloWorld"
+        "onCommand:react-antd-helper.generateModal"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -22,12 +24,17 @@
 			{
 				"command": "react-antd-helper.generateSimplePage",
 				"title": "生成一个简单页面",
-				"category": "快速生成React Antd页面"
+				"category": "快速生成React&Antd页面"
 			},
 			{
 				"command": "react-antd-helper.generateSearchFormAndTable",
 				"title": "生成一个表单检索&表格页面",
-				"category": "快速生成React Antd页面"
+				"category": "快速生成React&Antd页面"
+			},
+			{
+				"command": "react-antd-helper.generateModal",
+				"title": "生成一个弹窗页面",
+				"category": "快速生成React&Antd页面"
 			}
 		],
 		"menus": {
@@ -46,13 +53,17 @@
 				{
 					"command": "react-antd-helper.generateSearchFormAndTable",
 					"group": "1_generate@2"
+				},
+				{
+					"command": "react-antd-helper.generateModal",
+					"group": "1_generate@3"
 				}
 			]
     },
 		"submenus": [
 			{
 				"id": "react-antd-helper/submenu/generate",
-				"label": "快速生成一个react antd页面"
+				"label": "快速生成一个react&antd页面"
 			}
 		]
 	},
@@ -65,7 +76,7 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.69.0",
+		"@types/vscode": "^1.65.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",
 		"@types/node": "16.x",

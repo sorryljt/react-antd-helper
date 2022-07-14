@@ -4,22 +4,31 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import simplePageTemplate from './template/simplePage';
 import searchFormAndTable from './template/searchFormAndTable';
+import ModalPage from './template/modal';
 
-const writeFile = (path: string,content: string) => {
-	let fileName = '/index.tsx';
+/**
+ * 
+ * @param path 写入的文件路径
+ * @param content 写入的文件内容
+ * @param fileName 写入的文件名
+ * @param fileNameExtra 当文件名存在于该文件夹下时的替代文件名
+ */
+
+const writeFile = (path: string, content: string, fileName?: string | undefined, fileNameExtra?: string | undefined) => {
+	let newfileName = fileName || '/index.tsx';
 	const opt = {
 		flag: 'wx' // 但是如果文件路径存在，则文件写入失败。 覆盖写入： 'w'
 	};
-	const exists = fs.existsSync(path + fileName);
+	const exists = fs.existsSync(path + newfileName);
 	if (exists) {
-		fileName = '/index_副本.tsx';
+		newfileName = fileNameExtra || '/index_副本.tsx';
 	}
-	fs.writeFile(path + fileName, content, opt, (err) => {
+	fs.writeFile(path + newfileName, content, opt, (err) => {
 		if (err) {
-				vscode.window.showErrorMessage(`写入${fileName}失败`);
+				vscode.window.showErrorMessage(`写入${newfileName}失败`);
 				return;
 		}
-		vscode.window.showInformationMessage(`已生成一个示例页面${fileName}`);
+		vscode.window.showInformationMessage(`已生成一个示例页面${newfileName}`);
 	});
 };
 
@@ -48,9 +57,14 @@ export function activate(context: vscode.ExtensionContext) {
 		writeFile(e.path, searchFormAndTable);
 	});
 
+	let generateModal = vscode.commands.registerCommand('react-antd-helper.generateModal', (e) => {
+		writeFile(e.path, ModalPage, '/modalPage.tsx', '/modelPage_副本.tsx');
+	});
+
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(generateSimplePage);
 	context.subscriptions.push(generateSearchFormAndTable);
+	context.subscriptions.push(generateModal);
 }
 
 // this method is called when your extension is deactivated
