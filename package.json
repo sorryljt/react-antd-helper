@@ -6,7 +6,7 @@
 	"repository": "https://github.com/sorryljt/react-antd-helper",
 	"publisher": "sorryljt",
 	"license": "MIT",
-	"icon": "https://wos.58cdn.com.cn/cDazYxWcDHJ/picasso/tqo57vij.png",
+	"icon": "logo.png",
 	"engines": {
 		"vscode": "^1.65.x"
 	},
