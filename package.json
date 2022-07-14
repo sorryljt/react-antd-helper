@@ -2,10 +2,11 @@
   "name": "react-antd-helper",
 	"displayName": "react-antd-helper",
 	"description": "一款快速生成react+antd各种场景的模板插件",
-	"version": "0.0.2",
+	"version": "0.0.4",
 	"repository": "https://github.com/sorryljt/react-antd-helper",
 	"publisher": "sorryljt",
 	"license": "MIT",
+	"icon": "https://wos.58cdn.com.cn/cDazYxWcDHJ/picasso/tqo57vij.png",
 	"engines": {
 		"vscode": "^1.65.x"
 	},

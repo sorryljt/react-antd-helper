@@ -1,9 +1,16 @@
-# Change Log
+### 0.0.1
 
-All notable changes to the "react-antd-helper" extension will be documented in this file.
+- 试用版本，后续不断完善...
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### 0.0.2
 
-## [Unreleased]
+- 解决了插件依赖VsCode版本(1.69.0)过高的问题，现在可支持1.65.0以上的版本
+- 增加了“弹窗页面”模板
+- 优化了原来“表单&表格模板”
 
-- Initial release
+### 0.0.3
+
+出了一些小错误，将前两个版本`0.0.1`和`0.0.2`下掉了，重新上了一遍
+### 0.0.4
+
+- 增加了logo，用于在插件市场展示
