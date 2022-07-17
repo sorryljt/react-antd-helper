@@ -40,7 +40,7 @@ Ensure that you've read through the extensions guidelines and follow the best pr
 
 ## Working with Markdown
 
-* 在文件夹出鼠标右击即可看到“快速生成一个react antd页面”
+* 在文件夹处鼠标右击即可看到“快速生成一个react antd页面”
 
 ### For more information
 
