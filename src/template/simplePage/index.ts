@@ -16,7 +16,7 @@ const App: React.FC<AppProps> = (props) => {
 
   useEffect(() => {
     // useEffect在组件初始化或依赖更新时执行
-    // 依赖可以有多个，但主要注意的是，当依赖中有state时，不要在useEffct中再写该状态的set操作，会造成死循环111
+    // 依赖可以有多个，但主要注意的是，当依赖中有state时，不要在useEffect中再写该状态的set操作，会造成死循环
 
   }, [propsOne, propsTwo, state])
   return (
