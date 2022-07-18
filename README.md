@@ -1,3 +1,6 @@
+![img](https://img.shields.io/badge/VS%20Marketlace-v0.0.8-brightgreen) ![img](https://img.shields.io/badge/downloads-49KB-blue)
+
+
 # react-antd-helper（react antd 开发小助手）
 
 这是一款用于快速生成代码模板的插件，暂时支持的版本：

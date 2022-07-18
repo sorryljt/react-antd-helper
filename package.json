@@ -2,7 +2,7 @@
   "name": "react-antd-helper",
 	"displayName": "react-antd-helper",
 	"description": "一款快速生成react+antd各种场景的模板插件",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"repository": "https://github.com/sorryljt/react-antd-helper",
 	"publisher": "sorryljt",
 	"license": "MIT",
@@ -17,7 +17,9 @@
 				"onCommand:react-antd-helper.helloWorld",
         "onCommand:react-antd-helper.generateSimplePage",
         "onCommand:react-antd-helper.generateSearchFormAndTable",
-        "onCommand:react-antd-helper.generateModal"
+        "onCommand:react-antd-helper.generateModal",
+        "onCommand:react-antd-helper.copyFileName",
+        "onCommand:react-antd-helper.copyFolderName"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -36,6 +38,16 @@
 				"command": "react-antd-helper.generateModal",
 				"title": "生成一个弹窗页面",
 				"category": "快速生成React&Antd页面"
+			},
+			{
+				"command": "react-antd-helper.copyFileName",
+				"title": "复制文件名",
+				"category": "react-antd-helper"
+			},
+			{
+				"command": "react-antd-helper.copyFolderName",
+				"title": "复制文件夹名",
+				"category": "react-antd-helper"
 			}
 		],
 		"menus": {
@@ -44,6 +56,16 @@
           "group": "2_workspace@1",
           "when": "explorerResourceIsFolder",
 					"submenu": "react-antd-helper/submenu/generate"
+        },
+				{
+          "group": "2_workspace@2",
+					"command": "react-antd-helper.copyFileName",
+					"when": "!explorerResourceIsFolder"
+        },
+				{
+          "group": "2_workspace@3",
+					"command": "react-antd-helper.copyFolderName",
+					"when": "explorerResourceIsFolder"
         }
       ],
 			"react-antd-helper/submenu/generate": [
