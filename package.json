@@ -2,13 +2,13 @@
   "name": "react-antd-helper",
 	"displayName": "react-antd-helper",
 	"description": "一款快速生成react+antd各种场景的模板插件",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"repository": "https://github.com/sorryljt/react-antd-helper",
 	"publisher": "sorryljt",
 	"license": "MIT",
 	"icon": "logo.png",
 	"engines": {
-		"vscode": "^1.65.x"
+		"vscode": "^1.60.0"
 	},
 	"categories": [
 		"Other"
@@ -99,7 +99,7 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.65.0",
+		"@types/vscode": "^1.60.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",
 		"@types/node": "16.x",

@@ -1,4 +1,4 @@
-![img](https://img.shields.io/badge/VS%20Marketlace-v0.0.8-brightgreen) ![img](https://img.shields.io/badge/downloads-49KB-blue)
+![img](https://img.shields.io/badge/VS%20Marketlace-v0.0.9-brightgreen) ![img](https://img.shields.io/badge/downloads-49KB-blue)
 
 
 # react-antd-helper（react antd 开发小助手）
